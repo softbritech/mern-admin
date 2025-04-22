@@ -1,6 +1,6 @@
 const NotFound = () => {
     return (
-        <>ts</>
+        <>not found</>
     )
 }
 export default NotFound

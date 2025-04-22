@@ -1,14 +1,39 @@
 import express from "express";
+import dotenv from 'dotenv'
+import bodyParser from "body-parser";
+import cors from 'cors';
+import path from "path";
+import ConnectDb from "./config/db.js";
+import postRoutes from "./routes/post.routes.js";
 
 const app = express();
 
-const port = 3000;
+dotenv.config();
 
-app.get('/', (req, res) => {
-    res.json([{name: 'tes', title:'ds'}])
-})
+const port = process.env.PORT || 5000;
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+app.use(express.json());
+app.use(bodyParser.json({limit: "30mb", extended: true}));
+app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
+app.use(cors());
 
-})
+/* ROUTES */
+
+app.use('/posts', postRoutes);
+
+async function startServer() {
+    try {
+        // Get the singleton instance of ConnectDb
+        const db = ConnectDb.getInstance();
+
+        // Connect to MongoDB
+        await db.connect();
+
+        app.listen(port, () => {});
+
+    } catch (error) {
+        console.error("Failed to start the server:", error.message);
+        process.exit(1); // Exit the process if the server cannot start
+    }
+}
+startServer();

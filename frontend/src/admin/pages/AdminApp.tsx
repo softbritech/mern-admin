@@ -1,18 +1,19 @@
 import {Admin, Resource} from 'react-admin';
-import simpleRestProvider from 'ra-data-simple-rest';
 import AdminLayout from "../layouts/AdminLayout.tsx";
-import UserList from "../resources/UserList.tsx";
+import PostList from "../resources/PostList.tsx";
+import dataProvider from "../providers/dataProvider.tsx";
+import PostShow from "../resources/PostShow.tsx";
+import Dashboard from "./Dashboard.tsx";
 
-import { createBrowserHistory } from 'history';
 
-const history = createBrowserHistory();
+const AdminApp = () => {
 
-const dataProvider = simpleRestProvider('http://localhost:3000/');
+    return (
 
-const AdminApp = () => (
-    <Admin basename="/admin" history={history}  layout={AdminLayout} dataProvider={dataProvider}>
-        <Resource name="users" list={UserList} />
+    <Admin dashboard={Dashboard} basename="/admin"  layout={AdminLayout} dataProvider={dataProvider}>
+        <Resource name="posts" show={PostShow} list={PostList} />
     </Admin>
-);
+    )
+};
 
 export default AdminApp;
