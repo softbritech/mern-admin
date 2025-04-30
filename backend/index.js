@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 import cors from 'cors';
 import path from "path";
 import ConnectDb from "./config/db.js";
-import postRoutes from "./routes/post.routes.js";
+import {postRoutes, pageRoutes} from "./routes/index.js";
 
 const app = express();
 
@@ -18,8 +18,8 @@ app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
 
 /* ROUTES */
-
 app.use('/posts', postRoutes);
+app.use('/pages', pageRoutes);
 
 async function startServer() {
     try {

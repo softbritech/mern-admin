@@ -9,10 +9,8 @@ import PostIcon      from '@mui/icons-material/Book';
 export default function MyMenu(props: any) {
     return (
         <Menu {...props}>
-            {/* this will link to "/" (i.e. /admin/) and render your Dashboard */}
             <DashboardMenuItem leftIcon={<DashboardIcon />} />
 
-            {/* and your normal resources */}
             <MenuItemLink
                 to="posts"
                 primaryText="Posts"

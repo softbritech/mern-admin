@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+/* theme tokens… */
+@theme default{
+    /* breakpoints → responsive variants */
+    --breakpoint-xs: 480px;
+    --breakpoint-sm: 600px;
+    --breakpoint-md: 728px;
+    --breakpoint-lg: 984px;
+    --breakpoint-xl: 1350px;
+
+    /* class colors… */
+    --color-dark-grey: #272727;
+    --color-white: #fff;
+
+    /* font weight… */
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+}
+
+/* container override… */
+@utility container{
+    margin: auto;
+
+    @variant xl {
+        max-width: 1350px;
+    }
+    @variant lg {
+        max-width: 1350px;
+    }
+    @variant md {
+        max-width: 1350px;
+    }
+    @variant sm {
+        max-width: 1350px;
+    }
+    @variant xs {
+        max-width: 1350px;
+    }
+}
+
+/* global styles… */
+@layer base {
+    body {
+        font-family: "Lato";
+    }
+    :root {
+        --color-yellow: #f9b707;
+    }
+    a{
+        display: inline-block;
+        text-decoration: none;
+        transition: .33s all ease;
+    }
+}

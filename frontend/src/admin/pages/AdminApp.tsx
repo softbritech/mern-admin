@@ -4,15 +4,14 @@ import PostList from "../resources/PostList.tsx";
 import dataProvider from "../providers/dataProvider.tsx";
 import PostShow from "../resources/PostShow.tsx";
 import Dashboard from "./Dashboard.tsx";
+import {FC} from "react";
 
 
-const AdminApp = () => {
-
+const AdminApp: FC = () => {
     return (
-
-    <Admin dashboard={Dashboard} basename="/admin"  layout={AdminLayout} dataProvider={dataProvider}>
-        <Resource name="posts" show={PostShow} list={PostList} />
-    </Admin>
+        <Admin dashboard={Dashboard} basename="/admin"  layout={AdminLayout} dataProvider={dataProvider}>
+            <Resource name="posts" show={PostShow} list={PostList} />
+        </Admin>
     )
 };
 
