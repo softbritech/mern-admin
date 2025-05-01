@@ -1,14 +1,16 @@
-import {Swiper, SwiperSlide} from "swiper/swiper-react";
-import {Navigation} from "swiper/types/modules/navigation";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import {Navigation, Pagination} from 'swiper/modules';
 
-import 'swiper/swiper.css';
-import 'swiper/modules/navigation.css';
-import 'swiper/modules/pagination.css';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 const MainSlider = () => {
     return (
         <>
             <Swiper
-                modules={[Navigation]}
+                modules={[Navigation, Pagination]}
                 spaceBetween={15}
                 breakpoints={{
                     0: {

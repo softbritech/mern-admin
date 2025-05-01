@@ -4,6 +4,7 @@ import App from './App.tsx'
 import {BrowserRouter, Route, Routes} from "react-router";
 import AdminRoute from "./admin/routes/AdminRoute.tsx";
 
+
 createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
         <Routes>

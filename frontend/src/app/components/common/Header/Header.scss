@@ -1,7 +1,11 @@
 header{
+
   .header-wrapper{
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 1%, rgba(0, 0, 0, 0) 100%);
     box-shadow: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
     .header-wrapper__info{
       li{
         svg{
