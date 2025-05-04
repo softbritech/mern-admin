@@ -3,17 +3,17 @@ import {
     Show,
     SimpleShowLayout,
     TextField,
-    BooleanField,
-    type ShowProps,
+    type ShowProps, DateField,
 } from 'react-admin';
 
-const PostShow: React.FC<ShowProps> = props => (
+const PostShow: React.FC<ShowProps> = (props) => (
     <Show {...props}>
         <SimpleShowLayout>
+            <TextField label="name" source="name" />
+            <TextField label="description" source="description" />
+            <DateField source="createdAt" />
+            <DateField source="updatedAt" />
             <TextField source="id" />
-            <TextField source="name" />
-            <BooleanField source="change" />
-            <BooleanField source="done" />
         </SimpleShowLayout>
     </Show>
 );

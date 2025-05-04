@@ -1,5 +1,13 @@
 import postService from "../../app/services/postService.tsx";
-import {DataProvider, GetListParams, GetListResult, Identifier, RaRecord} from 'react-admin';
+import {
+    CreateParams,
+    CreateResult,
+    DataProvider, DeleteParams, DeleteResult,
+    GetListParams,
+    GetListResult, GetOneParams, GetOneResult,
+    Identifier,
+    RaRecord, UpdateParams, UpdateResult
+} from 'react-admin';
 
 interface Post extends RaRecord {
     _id: string;
@@ -23,8 +31,15 @@ const postProvider: DataProvider = {
         };
         throw new Error(`Unknown resource: ${resource}`);
     },
-    getOne: async () => {
-        throw new Error('Not implemented');
+    getOne: async (
+        _resource: string,
+        params: GetOneParams
+    ): Promise<GetOneResult> =>  {
+        const response = await postService.getPostById(params.id);
+
+        console.log( response, params.id)
+
+        return {data: {...response, id: response._id}}
     },
     getMany: async () => {
         throw new Error('Not implemented');
@@ -32,17 +47,28 @@ const postProvider: DataProvider = {
     getManyReference: async () => {
         throw new Error('Not implemented');
     },
-    create: async () => {
-        throw new Error('Not implemented');
+    create: async (resource: string, params: CreateParams<{
+        name: string;
+        description: string
+    }>): Promise<CreateResult<{ name: string; description: string }>> => {
+        const response = await postService.createPost(params.data);
+        return {data: {...response, id: response._id},};
     },
-    update: async () => {
-        throw new Error('Not implemented');
+    update: async (_resource: string, {id, data}: UpdateParams):Promise<UpdateResult> => {
+        const response = await postService.updatePostById(id, data);
+        return {
+            data: {
+                ...response, id: response._id
+            }
+        }
     },
     updateMany: async () => {
         throw new Error('Not implemented');
     },
-    delete: async () => {
-        throw new Error('Not implemented');
+    delete: async (_resource:string, {id}: DeleteParams):Promise<DeleteResult> => {
+        const response = await postService.deletePostById(id);
+        console.log(response, response._id)
+        return { data: {id: response._id},}
     },
     deleteMany: async () => {
         throw new Error('Not implemented');

@@ -6,7 +6,7 @@ class PageService {
             const pages = await Page.find().exec();
             return pages;
         } catch (error){
-            console.log((error))
+            console.log(error);
         }
     }
 

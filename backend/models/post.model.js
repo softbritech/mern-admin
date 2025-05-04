@@ -2,6 +2,7 @@ import mongoose, {Schema} from "mongoose";
 
 const postSchema = new Schema({
     name: String,
+    description: String,
     image: String,
     change: Boolean,
     done: Boolean
@@ -9,6 +10,6 @@ const postSchema = new Schema({
     timestamps: true,
 });
 
-const Post = mongoose.model('Post', postSchema);
+const Post= mongoose.model('Post', postSchema);
 
 export default Post;
