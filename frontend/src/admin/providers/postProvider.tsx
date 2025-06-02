@@ -37,8 +37,6 @@ const postProvider: DataProvider = {
     ): Promise<GetOneResult> =>  {
         const response = await postService.getPostById(params.id);
 
-        console.log( response, params.id)
-
         return {data: {...response, id: response._id}}
     },
     getMany: async () => {

@@ -1,37 +1,58 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import {Navigation, Pagination} from 'swiper/modules';
-
+import {Swiper, SwiperSlide} from 'swiper/react';
+import {Autoplay, Navigation, Pagination} from 'swiper/modules';
+import {Slide} from "../../../../../features/slides/types.tsx";
+import './MainSlider.scss';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
+import MainButton from "../../../common/Button/MainButton.tsx";
+import MainHeading from "../../../common/Heading/MainHeading/MainHeading.tsx";
 
-const MainSlider = () => {
+const MainSlider = ({items}) => {
     return (
         <>
             <Swiper
-                modules={[Navigation, Pagination]}
+                modules={[Navigation, Pagination, Autoplay]}
                 spaceBetween={15}
-                breakpoints={{
-                    0: {
-                        slidesPerView: 1,
-                    },
-                    768: {
-                        slidesPerView: 2,
-                    },
-                    1200: {
-                        slidesPerView: 3,
-                    }
-                }}
+                slidesPerView={1}
                 loop={true}
+                autoplay={false}
                 navigation
-                pagination={{ clickable: true }}
+                pagination={{clickable: true}}
                 className="main-slider"
             >
-                <SwiperSlide>Slide 1</SwiperSlide>
-                <SwiperSlide>Slide 2</SwiperSlide>
-                <SwiperSlide>Slide 3</SwiperSlide>
-                <SwiperSlide>Slide 4</SwiperSlide>
+                {items.map((item: Slide) => (
+                    <SwiperSlide key={item._id}>
+                        <div className="swiper-slide__item"
+                             style={{ backgroundImage: `url(/${item.image})` }}
+                        >
+                            <div className="swiper-slide__content text-center">
+                                <MainHeading
+                                    className="main-title xl-size font-[700]"
+                                    data-aos="fade-up"
+                                    title={item.title}
+                                />
+                                <p className="swiper-slide__text size-lg mt-4 px-22"
+                                   data-aos="fade-up"
+                                   data-aos-duration="200">
+                                    {item.description}
+                                </p>
+                                <div className="swiper-slide__buttons"
+                                     data-aos="fade-up"
+                                     data-aos-duration="300">
+                                    <MainButton
+                                        text="Contact Us"
+                                        slug={item.slug}
+                                        className="main-button main-button-yellow mt-4 lg:mt-15"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </SwiperSlide>
+                ))}
+
             </Swiper>
         </>
     )

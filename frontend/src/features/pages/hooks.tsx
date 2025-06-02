@@ -8,14 +8,14 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export const usePages = () => {
     const dispatch = useAppDispatch();
     const pages = useAppSelector(selectPages);
-    const loading = useAppSelector(selectPagesLoading);
+    const pagesIsLoading = useAppSelector(selectPagesLoading);
     const error = useAppSelector(selectPagesError);
 
     useEffect(() => {
-        if(!loading && pages.length === 0 && !error) {
+        if(!pagesIsLoading && pages.length === 0 && !error) {
             dispatch(fetchPages())
         }
-    }, [dispatch, loading, error, pages.length])
+    }, [dispatch, pagesIsLoading, error, pages.length])
 
-    return { pages, loading, error};
+    return { pages, pagesIsLoading, error};
 }

@@ -1,0 +1,2 @@
+export const UI_TOGGLE_SIDEBAR = 'UI_TOGGLE_SIDEBAR';
+

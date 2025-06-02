@@ -10,13 +10,15 @@ import {Suspense} from "react";
 import Spinner from "../Spinner/Spinner.tsx";
 import {Page} from "../../../../features/pages/types.tsx";
 import {usePages} from "../../../../features/pages/hooks.tsx";
+const Header = ({handleToggle}) => {
 
-const Header = () => {
-    const {pages, loading} = usePages();
+    const {pages, pagesIsLoading} = usePages();
+
+
     return (
         <header>
             <div className="header-wrapper">
-                <div className="header-wrapper__top  bg-dark-grey">
+                <div className="header-wrapper__top hidden lg:block bg-dark-grey px-5">
                     <div className="container mx-auto">
                         <div className="flex justify-between">
                             <ul className="header-wrapper__info flex items-center py-3.5 pe-6">
@@ -50,14 +52,17 @@ const Header = () => {
                         </div>
                     </div>
                 </div>
-                <div className="header-wrapper__bottom py-7">
+                <div className="header-wrapper__bottom py-1 px-1 lg:py-7 lg:px-5">
                     <div className="container mx-auto">
-                        <div className="flex justify-between">
+                        <div className="flex items-center lg:justify-between">
+                            <button type="button" onClick={handleToggle} className="header-hamburger__menu">
+                                <span></span>
+                            </button>
                             <a className="header-logo__site pe-6" href="/" title="site name">
                                 <img src="/logo-site.webp" alt="logo site"/>
                             </a>
-                            <ul className="header-menu__list flex items-center ps=6">
-                                <Suspense fallback={<Spinner loading={loading}/>}>
+                            <ul className="header-menu__list hidden lg:flex items-center ps=6">
+                                <Suspense fallback={<Spinner loading={pagesIsLoading}/>}>
                                     {pages.map((page: Page) => (
                                         <li className="mt-3.5 px-3.5 text-white" key={page._id}>
                                             <a className="font-[400]" href={page.slug}>{page.name}</a>

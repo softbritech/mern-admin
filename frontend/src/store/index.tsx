@@ -2,11 +2,15 @@ import {createStore, applyMiddleware, combineReducers} from 'redux';
 import {thunk} from "redux-thunk";
 import postReducer from "../features/posts/reducer.tsx";
 import pageReducer from "../features/pages/reducer.tsx";
+import slideReducer from "../features/slides/reducer.tsx";
+import layoutReducer from "../features/ui/reducer.tsx";
 
 const initialStore = {};
 export const rootReducer = combineReducers({
     posts: postReducer,
     pages: pageReducer,
+    slides: slideReducer,
+    layout: layoutReducer,
 });
 const middleware = [thunk];
 

@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 import cors from 'cors';
 import path from "path";
 import ConnectDb from "./config/db.js";
-import {postRoutes, pageRoutes} from "./routes/index.js";
+import {postRoutes, pageRoutes, slideRoutes} from "./routes/index.js";
 
 const app = express();
 
@@ -20,6 +20,7 @@ app.use(cors());
 /* ROUTES */
 app.use('/posts', postRoutes);
 app.use('/pages', pageRoutes);
+app.use('/slides', slideRoutes);
 
 async function startServer() {
     try {

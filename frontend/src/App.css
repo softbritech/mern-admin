@@ -9,10 +9,6 @@
     --breakpoint-lg: 984px;
     --breakpoint-xl: 1350px;
 
-    /* class colors… */
-    --color-dark-grey: #272727;
-    --color-white: #fff;
-
     /* font weight… */
     --font-weight-light: 300;
     --font-weight-regular: 400;
@@ -49,6 +45,10 @@
     }
     :root {
         --color-yellow: #f9b707;
+        --color-white: #fff;
+        --color-black: #000;
+        --color-grey: #333c;
+        --color-darkGrey: #272727;
     }
     a{
         display: inline-block;

@@ -1,0 +1,23 @@
+.main-button{
+  font-family: 'Montserrat';
+  font-weight: 400;
+  color: var(--color-white);
+  padding: 16px 40px;
+  width: 100%;
+  max-width: 181px;
+  text-transform: uppercase;
+  border-radius: 3px;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.84px;
+  transition: .33s all ease;
+
+  &.main-button-yellow{
+    background-color: var(--color-yellow);
+    border-color: var(--color-yellow);
+    &:hover{
+      background-color: var(--color-black);
+      border-color: var(--color-black);
+    }
+  }
+}

@@ -1,0 +1,31 @@
+nav{
+  position: fixed;
+  z-index: 100;
+  top: -56px;
+  left: 0;
+  width: 280px;
+  padding: 112px 0 81px;
+  bottom: -56px;
+  box-shadow: 0 2px 12px rgba(136, 136, 136, 0.1);
+  color: var(--color-white);
+  background: var(--color-darkGrey);
+  border-color: var(--color-grey);
+  transition: 0.32s all cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  transform: translateX(-110%);
+  &.isActive{
+    transform: translateX(0);
+  }
+  .navbar-links{
+    li{
+      a{
+        font-size: 12px;
+        line-height: 24px;
+        text-transform: uppercase;
+        font-family: 'Montserrat';
+      }
+    }
+  }
+}

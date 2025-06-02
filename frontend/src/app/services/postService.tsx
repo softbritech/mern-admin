@@ -41,6 +41,9 @@ class PostService {
             console.log(error);
         }
     }
+    deleteAll = async () => {
+
+    }
 }
 
 export default new PostService();

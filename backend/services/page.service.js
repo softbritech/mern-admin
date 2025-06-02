@@ -1,12 +1,34 @@
 import Page from "../models/page.model.js";
+import Post from "../models/post.model.js";
 
 class PageService {
     async getAll(){
         try {
-            const pages = await Page.find().exec();
+            const pages = await Page.find().lean().exec();
             return pages;
         } catch (error){
             console.log(error);
+        }
+    }
+    async getPage(id){
+        try {
+            return await Page.findById(id).lean().exec();
+        } catch (error){
+            console.log(error);
+        }
+    }
+    async createPost(data) {
+        try {
+            return await Page.create(data);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    async updatePost(id, data) {
+        try {
+            return await Page.findByIdAndUpdate(id, data, {new: true}).lean().exec();
+        } catch (error) {
+            console.log(error)
         }
     }
 

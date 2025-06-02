@@ -1,0 +1,34 @@
+.main-heading__section {
+  .main-title {
+    text-transform: uppercase;
+    position: relative;
+    color: var(--color-white);
+
+    &:before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: -18px;
+      width: 100%;
+      max-width: 115px;
+      height: 2px;
+      background-color: var(--color-yellow);
+      margin-bottom: 30px;
+    }
+
+    &.xl-size {
+      line-height: 128px;
+      font-size: 110px;
+      font-family: 'Montserrat';
+      @media(max-width: 991px){
+        font-size: 56px;
+        line-height: 1.16364;
+      }
+      @media(max-width: 768px){
+        font-size: 30px;
+        line-height: 1.2;
+      }
+    }
+  }
+}
