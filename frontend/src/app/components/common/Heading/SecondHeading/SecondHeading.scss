@@ -1,0 +1,28 @@
+.second-heading__section{
+  .second-title {
+    text-transform: uppercase;
+    position: relative;
+    font-size: 25px;
+    line-height: 43px;
+    letter-spacing: 1.5px;
+    font-family: 'Montserrat';
+    &.second-title-black{
+      color: var(--color-black);
+    }
+    @media(max-width: 991px){
+      font-size: 24px;
+      line-height: 1.5;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: -25px;
+      width: 100%;
+      max-width: 63px;
+      height: 2px;
+      background-color: var(--color-yellow);
+      margin-bottom: 30px;
+    }
+  }
+}

@@ -34,7 +34,7 @@ const MainSlider = ({items}) => {
                                     data-aos="fade-up"
                                     title={item.title}
                                 />
-                                <p className="swiper-slide__text size-lg mt-4 px-22"
+                                <p className="swiper-slide__text text-description size-lg mt-4 px-3.5 lg:px-22"
                                    data-aos="fade-up"
                                    data-aos-duration="200">
                                     {item.description}

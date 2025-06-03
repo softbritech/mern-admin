@@ -1,4 +1,4 @@
-import {Edit, LayoutProps, SimpleForm, TextInput} from "react-admin";
+import {Edit, ImageField, ImageInput, LayoutProps, SimpleForm, TextInput} from "react-admin";
 
 const PageEdit: React.FC<LayoutProps> = (props) => {
     return (
@@ -8,7 +8,9 @@ const PageEdit: React.FC<LayoutProps> = (props) => {
                 <TextInput source="name" />
                 <TextInput multiline source="description" />
                 <TextInput multiline source="short_description" />
-
+                <ImageInput source="image" label="Image" accept="image/*">
+                    <ImageField source="src" title="title" />
+                </ImageInput>
             </SimpleForm>
         </Edit>
     )

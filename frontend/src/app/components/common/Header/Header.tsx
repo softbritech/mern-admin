@@ -10,13 +10,14 @@ import {Suspense} from "react";
 import Spinner from "../Spinner/Spinner.tsx";
 import {Page} from "../../../../features/pages/types.tsx";
 import {usePages} from "../../../../features/pages/hooks.tsx";
+import {useScrolled} from "../../../hooks/useScrolled.tsx";
 const Header = ({handleToggle}) => {
 
     const {pages, pagesIsLoading} = usePages();
-
+    const  isScrolled  = useScrolled();
 
     return (
-        <header>
+        <header className={isScrolled ? 'isActive' : ''}>
             <div className="header-wrapper">
                 <div className="header-wrapper__top hidden lg:block bg-dark-grey px-5">
                     <div className="container mx-auto">

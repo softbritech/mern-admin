@@ -27,6 +27,11 @@ const Home = () => {
                     </ErrorBoundary>
                 </div>
             </section>
+            {aboutPage && (
+                <Suspense fallback={<Spinner loading={pagesIsLoading}/>}>
+                    <AboutUs page={aboutPage}/>
+                </Suspense>
+            )}
             <section className="articles-section">
                 <div className="articles-section__wrapper">
                     <ErrorBoundary fallback={<div>Something went wrong</div>}>
@@ -40,11 +45,6 @@ const Home = () => {
                     </ErrorBoundary>
                 </div>
             </section>
-            {aboutPage && (
-                <Suspense fallback={<Spinner loading={pagesIsLoading}/>}>
-                    <AboutUs page={aboutPage}/>
-                </Suspense>
-            )}
         </>
     )
 }

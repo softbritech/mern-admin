@@ -6,6 +6,7 @@ const pageSchema = new Schema({
     title: String,
     description: String,
     short_description: String,
+    image: String,
     isHeader: {type: Boolean, default: true},
     isFooter:{type: Boolean, default: false},
 }, {
