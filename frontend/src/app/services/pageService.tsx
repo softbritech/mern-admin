@@ -19,7 +19,11 @@ class PageService {
     }
     updatePostById = async (id: string, body: any ) => {
         try {
-            const { data } = await instance.put(`/pages/${id}`, body);
+            const { data } = await instance.put(`/pages/${id}`, body, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
             return data;
         } catch (error){
             console.log(error);
@@ -27,8 +31,20 @@ class PageService {
     }
     createPost = async (data: any) => {
         try {
-            const response = await instance.post('/pages/new', data);
+            const response = await instance.post('/pages/new', data, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
             return response.data;
+        } catch (error){
+            console.log(error)
+        }
+    }
+    deletePage = async (id) => {
+        try {
+            const {data} = await instance.delete(`/pages/${id}`);
+            return data;
         } catch (error){
             console.log(error)
         }

@@ -31,6 +31,13 @@ class PageService {
             console.log(error)
         }
     }
+    async deletePage(id) {
+        try {
+            return await Page.findByIdAndDelete(id).lean().exec();
+        } catch (error){
+            console.log(error)
+        }
+    }
 
 }
 export default PageService

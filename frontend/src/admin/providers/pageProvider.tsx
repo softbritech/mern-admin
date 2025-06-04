@@ -1,6 +1,6 @@
 import {
     CreateParams, CreateResult,
-    DataProvider,
+    DataProvider, DeleteParams, DeleteResult,
     GetListParams,
     GetListResult,
     GetOneParams,
@@ -49,11 +49,37 @@ const pageProvider: DataProvider = {
         name: string;
         description: string
     }>): Promise<CreateResult<{ name: string; description: string }>> => {
-        const response = await pageService.createPost(params.data);
+        const { image, ...otherData } = params.data;
+
+        const formData = new FormData();
+
+        Object.entries(otherData).forEach(([key, value]) => {
+            formData.append(key, value);
+        });
+
+        if (image && image.rawFile instanceof File) {
+            formData.append('image', image.rawFile);
+        }
+
+        const response = await pageService.createPost(formData);
+
         return {data: {...response, id: response._id},};
     },
     update: async (_resource: string, {id, data}: UpdateParams):Promise<UpdateResult> => {
-        const response = await pageService.updatePostById(id, data);
+        const { image, ...otherData} = data;
+
+        const formData = new FormData();
+
+        Object.entries(otherData).forEach(([key, value]) => {
+            formData.append(key, value);
+        });
+
+        if (image && image.rawFile instanceof File) {
+            formData.append('image', image.rawFile);
+        }
+
+        const response = await pageService.updatePostById(id, formData);
+
         return {
             data: {
                 ...response, id: response._id
@@ -63,8 +89,14 @@ const pageProvider: DataProvider = {
     updateMany: async () => {
         throw new Error('Not implemented');
     },
-    delete: async () => {
-        throw new Error('Not implemented');
+    delete: async (_resource: string, { id }: DeleteParams):Promise<DeleteResult> =>
+    {
+        const response = await pageService.deletePage(id);
+        return {
+            data: {
+                 id: response._id
+            }
+        }
     },
     deleteMany: async () => {
         throw new Error('Not implemented');

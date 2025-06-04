@@ -15,6 +15,7 @@ const Home = () => {
     const {pages, pagesIsLoading} = usePages()
 
     const aboutPage = pages.find((page) => page.slug === '/about-us');
+    const testPage = pages.find((page) => page.name === 'test');
 
     return (
         <>
@@ -30,6 +31,7 @@ const Home = () => {
             {aboutPage && (
                 <Suspense fallback={<Spinner loading={pagesIsLoading}/>}>
                     <AboutUs page={aboutPage}/>
+                    <img src={testPage.image}/>
                 </Suspense>
             )}
             <section className="articles-section">

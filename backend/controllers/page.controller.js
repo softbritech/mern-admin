@@ -27,19 +27,37 @@ class PageController {
     }
 
     async createPage(req, res){
-        const { body } = req.body;
         try {
-            const page= await this.pageService.createPost(body);
+            const image = req.file?.filename;
+            const page = await this.pageService.createPost({
+                ...req.body,
+                image: image ? `/${image}` : undefined,
+            });
             res.status(200).json(page);
         } catch (error){
             console.log(error);
             res.status(404).json({message: error.message});
         }
     }
+    //UPDATE DOESN'T WORK AND IMPLEMET THE DELETE TOO
     async updatePageById(req,res){
         const { id } = req.params;
         try {
-            const page = await this.pageService.updatePost(id, req.body);
+            const image = req.file?.filename;
+            const updateData = await this.pageService.updatePost({
+                ...req.body,
+                image:image ? `/${image}` : undefined,
+            })
+            const page = await this.pageService.updatePost(id, updateData);
+            res.status(200).json(page);
+        } catch (error){
+            res.status(500).json({ message: error.message });
+        }
+    }
+    async deletePageById(req,res){
+        const {id} = req.params;
+        try {
+            const page = await this.pageService.deletePage(id);
             res.status(200).json(page);
         } catch (error){
             res.status(500).json({ message: error.message });

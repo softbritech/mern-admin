@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import bodyParser from "body-parser";
 import cors from 'cors';
 import path from "path";
+import { fileURLToPath } from 'url';
 import ConnectDb from "./config/db.js";
 import {postRoutes, pageRoutes, slideRoutes} from "./routes/index.js";
 
@@ -17,10 +18,14 @@ app.use(bodyParser.json({limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 /* ROUTES */
 app.use('/posts', postRoutes);
 app.use('/pages', pageRoutes);
 app.use('/slides', slideRoutes);
+app.use('/images', express.static(path.join(__dirname, '../frontend/public/images')));
 
 async function startServer() {
     try {
