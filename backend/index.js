@@ -25,7 +25,9 @@ const __dirname = path.dirname(__filename);
 app.use('/posts', postRoutes);
 app.use('/pages', pageRoutes);
 app.use('/slides', slideRoutes);
-app.use('/images', express.static(path.join(__dirname, '../frontend/public/images')));
+app.use('/services', slideRoutes);
+
+app.use('/images', express.static(path.join(__dirname, '../frontend/public/')));
 
 async function startServer() {
     try {

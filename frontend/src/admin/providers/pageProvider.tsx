@@ -61,30 +61,38 @@ const pageProvider: DataProvider = {
             formData.append('image', image.rawFile);
         }
 
-        const response = await pageService.createPost(formData);
+        const response = await pageService.createPage(formData);
 
         return {data: {...response, id: response._id},};
     },
     update: async (_resource: string, {id, data}: UpdateParams):Promise<UpdateResult> => {
-        const { image, ...otherData} = data;
+        const { image, ...rest } = data;
 
-        const formData = new FormData();
+        if (image && image.rawFile && image.rawFile instanceof File) {
+            const formData = new FormData();
 
-        Object.entries(otherData).forEach(([key, value]) => {
-            formData.append(key, value);
-        });
+            Object.entries(rest).forEach(([key, value]) => {
+                formData.append(key, value);
+            });
 
-        if (image && image.rawFile instanceof File) {
-            formData.append('image', image.rawFile);
+            formData.append('image', image.rawFile, image.rawFile.name);
+
+
+            const response = await pageService.updatePageById(id, formData);
+            return {
+                data: {
+                    ...response, id: response._id
+                }
+            };
         }
 
-        const response = await pageService.updatePostById(id, formData);
+        const response = await pageService.updatePageById(id, rest);
 
         return {
             data: {
                 ...response, id: response._id
             }
-        }
+        };
     },
     updateMany: async () => {
         throw new Error('Not implemented');

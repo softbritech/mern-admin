@@ -8,7 +8,11 @@ const PageEdit: React.FC<LayoutProps> = (props) => {
                 <TextInput source="name" />
                 <TextInput multiline source="description" />
                 <TextInput multiline source="short_description" />
-                <ImageInput source="image" label="Image" accept="image/*">
+                <ImageInput
+                    source="image"
+                    label="Image"
+                    accept="image/jpeg, image/png, image/jpg, image/webp"
+                >
                     <ImageField source="src" title="title" />
                 </ImageInput>
             </SimpleForm>

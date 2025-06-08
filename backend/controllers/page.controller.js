@@ -1,5 +1,9 @@
 import PageService from "../services/page.service.js";
+import path from "path";
+import { fileURLToPath } from "url";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 class PageController {
     constructor() {
         this.pageService = new PageService();
@@ -29,7 +33,7 @@ class PageController {
     async createPage(req, res){
         try {
             const image = req.file?.filename;
-            const page = await this.pageService.createPost({
+            const page = await this.pageService.createPage({
                 ...req.body,
                 image: image ? `/${image}` : undefined,
             });
@@ -39,16 +43,22 @@ class PageController {
             res.status(404).json({message: error.message});
         }
     }
-    //UPDATE DOESN'T WORK AND IMPLEMET THE DELETE TOO
+
     async updatePageById(req,res){
         const { id } = req.params;
         try {
-            const image = req.file?.filename;
-            const updateData = await this.pageService.updatePost({
-                ...req.body,
-                image:image ? `/${image}` : undefined,
-            })
-            const page = await this.pageService.updatePost(id, updateData);
+            const oldPage = await this.pageService.getPage(id);
+            if (!oldPage) return res.status(404).json({ message: 'Not found' });
+            let updateData = { ...req.body };
+
+            if (req.file) {
+                updateData.image = req.file.filename;
+            } else {
+                updateData.image = oldPage.image
+            }
+
+            const page = await this.pageService.updatePage(id, updateData);
+
             res.status(200).json(page);
         } catch (error){
             res.status(500).json({ message: error.message });

@@ -10,7 +10,11 @@ router.get('/',  pageController.getPages.bind(pageController));
 router.get('/:id', pageController.getPageById.bind(pageController));
 
 router.post('/new', upload.single('image'), pageController.createPage.bind(pageController));
-router.put('/:id',  upload.single('image'), pageController.updatePageById.bind(pageController));
+
+router.patch('/:id',
+    upload.single('image'),
+    pageController.updatePageById.bind(pageController),
+);
 
 router.delete('/:id', pageController.deletePageById.bind(pageController));
 export default router;

@@ -17,16 +17,16 @@ class PageService {
             console.log(error);
         }
     }
-    async createPost(data) {
+    async createPage(data) {
         try {
             return await Page.create(data);
         } catch (error) {
             console.log(error)
         }
     }
-    async updatePost(id, data) {
+    async updatePage(id, data) {
         try {
-            return await Page.findByIdAndUpdate(id, data, {new: true}).lean().exec();
+            return await Page.findByIdAndUpdate(id, data, {new: true}).exec();
         } catch (error) {
             console.log(error)
         }

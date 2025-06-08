@@ -5,31 +5,33 @@ class PageService {
         try {
             const response = await instance.get('/pages');
             return response.data;
-        } catch (error){
+        } catch (error) {
             console.log(error);
         }
     }
-    getPageById = async (id: string ) => {
+    getPageById = async (id: string) => {
         try {
-            const { data } = await instance.get(`/pages/${id}`);
+            const {data} = await instance.get(`/pages/${id}`);
             return data;
-        } catch (error){
+        } catch (error) {
             console.log(error);
         }
     }
-    updatePostById = async (id: string, body: any ) => {
+    updatePageById = async (id: string, payload: FormData | Record<string, any>) => {
+        console.log('Payload for update:', payload);
+        console.log('Is payload instance of FormData?', payload instanceof FormData);
         try {
-            const { data } = await instance.put(`/pages/${id}`, body, {
+            const {data} = await instance.patch(`/pages/${id}`, payload, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
             return data;
-        } catch (error){
+        } catch (error) {
             console.log(error);
         }
     }
-    createPost = async (data: any) => {
+    createPage = async (data: any) => {
         try {
             const response = await instance.post('/pages/new', data, {
                 headers: {
@@ -37,7 +39,7 @@ class PageService {
                 },
             });
             return response.data;
-        } catch (error){
+        } catch (error) {
             console.log(error)
         }
     }
@@ -45,9 +47,10 @@ class PageService {
         try {
             const {data} = await instance.delete(`/pages/${id}`);
             return data;
-        } catch (error){
+        } catch (error) {
             console.log(error)
         }
     }
 }
+
 export default new PageService();
