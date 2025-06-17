@@ -10,6 +10,7 @@ import AboutUs from "../../components/includes/AboutUs/AboutUs.tsx";
 import SecondHeading from "../../components/common/Heading/SecondHeading/SecondHeading.tsx";
 import {useServices} from "../../../features/services/hooks.tsx";
 import {Service} from "../../../features/services/types.tsx";
+import ServiceItem from "../../components/includes/Services/ServiceItem/ServiceItem.tsx";
 
 
 const Home = () => {
@@ -38,19 +39,23 @@ const Home = () => {
             )}
             <section className="services-section">
                 <div className="services-section__wrapper">
-                    <SecondHeading
-                        className="second-title text-center second-title-grey font-[700]"
-                        title="Our Services"
-                    />
-                    <ErrorBoundary fallback={<div>Something went wrong</div>}>
-                        <Suspense fallback={<Spinner loading={loading}/>}>
-                            {services.map((service: Service) => (
-                                <div key={service._id}>
-                                    <h4>{service.title}</h4>
+                    <div className="container mx-auto">
+                        <SecondHeading
+                            className="second-title text-center second-title-black font-[700]"
+                            title="Our Services"
+                        />
+                        <ErrorBoundary fallback={<div>Something went wrong</div>}>
+                            <Suspense fallback={<Spinner loading={serviceIsLoading}/>}>
+                                <div className="services-list mt-10 lg:mt-15 flex flex-wrap xl:flex-nowrap justify-center">
+                                    {services.map((service: Service) => (
+                                        <div className="md:w-2/5 xl:w-1/2 sm:w-full px-5">
+                                            <ServiceItem key={service._id} service={service}/>
+                                        </div>
+                                    ))}
                                 </div>
-                            ))}
-                        </Suspense>
-                    </ErrorBoundary>
+                            </Suspense>
+                        </ErrorBoundary>
+                    </div>
                 </div>
             </section>
             <section className="articles-section">

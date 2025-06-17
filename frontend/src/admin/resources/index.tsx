@@ -9,6 +9,10 @@ import PageList from "../resources/Page/PageList.tsx";
 import SlideEdit from "../resources/Slide/SlideEdit.tsx";
 import PageCreate from "../resources/Page/PageCreate.tsx";
 import PageEdit from "../resources/Page/PageEdit.tsx";
+import ServiceList from '../resources/Service/ServiceList.tsx'
+import ServiceEdit from '../resources/Service/ServiceEdit.tsx'
+import ServiceShow from '../resources/Service/ServiceShow.tsx'
+import ServiceCreate from '../resources/Service/ServiceCreate.tsx'
 
 export {
     PostCreate,
@@ -21,5 +25,10 @@ export {
     PageList,
     SlideEdit,
     PageCreate,
-    PageEdit
+    PageEdit,
+    ServiceList,
+    ServiceEdit,
+    ServiceShow,
+    ServiceCreate
+
 }
