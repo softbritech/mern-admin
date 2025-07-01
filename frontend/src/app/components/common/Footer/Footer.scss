@@ -1,0 +1,23 @@
+footer{
+  background: var(--color-darkGrey);
+  .footer-wrapper{
+    .footer-wrapper__copyright{
+      p{
+        font-size: 14px;
+        line-height: 24px;
+        font-weight: 300;
+        color: var(--color-lightGrey);
+      }
+    }
+    .footer-wrapper__socials{
+      li{
+        a{
+          color:var(--color-white);
+          &:hover{
+            color: var(--color-yellow);
+          }
+        }
+      }
+    }
+  }
+}

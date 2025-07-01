@@ -9,7 +9,6 @@ import {
     RaRecord, UpdateParams, UpdateResult
 } from 'react-admin';
 import pageService from "../../app/services/pageService.tsx";
-import postService from "../../app/services/postService.tsx";
 
 interface Page extends RaRecord {
     _id: string;

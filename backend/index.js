@@ -5,7 +5,7 @@ import cors from 'cors';
 import path from "path";
 import { fileURLToPath } from 'url';
 import ConnectDb from "./config/db.js";
-import {postRoutes, pageRoutes, slideRoutes} from "./routes/index.js";
+import {postRoutes, pageRoutes, slideRoutes, serviceRoutes, configRoutes} from "./routes/index.js";
 
 const app = express();
 
@@ -25,7 +25,8 @@ const __dirname = path.dirname(__filename);
 app.use('/posts', postRoutes);
 app.use('/pages', pageRoutes);
 app.use('/slides', slideRoutes);
-app.use('/services', slideRoutes);
+app.use('/services', serviceRoutes);
+app.use('/config', configRoutes);
 
 app.use('/images', express.static(path.join(__dirname, '../frontend/public/')));
 

@@ -13,7 +13,10 @@ import ServiceList from '../resources/Service/ServiceList.tsx'
 import ServiceEdit from '../resources/Service/ServiceEdit.tsx'
 import ServiceShow from '../resources/Service/ServiceShow.tsx'
 import ServiceCreate from '../resources/Service/ServiceCreate.tsx'
-
+import ConfigList from '../resources/Config/ConfigList.tsx'
+import ConfigEdit from '../resources/Config/ConfigEdit.tsx'
+import ConfigCreate from '../resources/Config/ConfigCreate.tsx'
+import ConfigShow from '../resources/Config/ConfigShow.tsx'
 export {
     PostCreate,
     PostEdit,
@@ -29,6 +32,10 @@ export {
     ServiceList,
     ServiceEdit,
     ServiceShow,
-    ServiceCreate
+    ServiceCreate,
+    ConfigList,
+    ConfigEdit,
+    ConfigCreate,
+    ConfigShow,
 
 }

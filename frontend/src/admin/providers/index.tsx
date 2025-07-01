@@ -3,6 +3,7 @@ import postProvider from "./postProvider.tsx";
 import pageProvider from "./pageProvider.tsx";
 import slideProvider from "./slideProviders.tsx";
 import serviceProvider from "./serviceProvider.tsx";
+import configProvider from "./configProvider.tsx";
 
 export const dataProvider = combineDataProviders((resource) => {
     switch (resource) {
@@ -14,6 +15,8 @@ export const dataProvider = combineDataProviders((resource) => {
             return slideProvider;
         case 'services':
             return serviceProvider;
+        case 'config':
+            return configProvider;
         default:
             throw new Error(`Unknown resource: ${resource}`);
     }

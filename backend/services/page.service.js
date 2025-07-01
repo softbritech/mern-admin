@@ -1,5 +1,4 @@
 import Page from "../models/page.model.js";
-import Post from "../models/post.model.js";
 
 class PageService {
     async getAll(){

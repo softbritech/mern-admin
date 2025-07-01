@@ -4,6 +4,7 @@ import Sidebar from "../components/common/Sidebar/Sidebar.tsx";
 import {useDispatch, useSelector} from "react-redux";
 import {sidebarOpen} from "../../features/ui/selectors.tsx";
 import {toggleSidebar} from "../../features/ui/actions.tsx";
+import Footer from "../components/common/Footer/Footer.tsx";
 
 const MainLayout = () => {
 
@@ -20,6 +21,7 @@ const MainLayout = () => {
             <main>
                 <Outlet/>
             </main>
+            <Footer/>
         </>
     )
 }

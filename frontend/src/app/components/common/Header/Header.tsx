@@ -11,10 +11,12 @@ import Spinner from "../Spinner/Spinner.tsx";
 import {Page} from "../../../../features/pages/types.tsx";
 import {usePages} from "../../../../features/pages/hooks.tsx";
 import {useScrolled} from "../../../hooks/useScrolled.tsx";
+import {useConfig} from "../../../../features/config/hooks.tsx";
 const Header = ({handleToggle}) => {
 
     const {pages, pagesIsLoading} = usePages();
-    const  isScrolled  = useScrolled();
+    const isScrolled  = useScrolled();
+    const {config, configIsLoading} = useConfig();
 
     return (
         <header className={isScrolled ? 'isActive' : ''}>
@@ -30,9 +32,9 @@ const Header = ({handleToggle}) => {
                                    </span>
                                 </li>
                                 <li className="ps-4 flex items-center">
-                                    <a href="tel:">
+                                    <a href={`tel:${config.phone}`}>
                                         <FontAwesomeIcon icon={faPhone}/>
-                                        <span className="ms-1 font-[300]">(800) 123-0045</span>
+                                        <span className="ms-1 font-[300]">{config.phone}</span>
                                     </a>
                                 </li>
                             </ul>

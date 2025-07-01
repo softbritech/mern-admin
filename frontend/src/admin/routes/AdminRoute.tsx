@@ -15,9 +15,9 @@ import {
     SlideEdit,
     PageEdit,
     PageCreate,
-    ServiceEdit, ServiceCreate, ServiceShow
+    ServiceEdit, ServiceCreate, ServiceShow, ConfigList, ConfigShow, ConfigEdit, ServiceList, ConfigCreate
 } from "../resources";
-import ServiceList from "../resources/Service/ServiceList.tsx";
+
 
 
 const AdminRoute: FC = () => {
@@ -27,6 +27,7 @@ const AdminRoute: FC = () => {
             <Resource name="pages" show={PageShow} list={PageList} create={PageCreate} edit={PageEdit}/>
             <Resource name="slides" show={SlideShow} list={SlideList} edit={SlideEdit}/>
             <Resource name="services" show={ServiceShow} list={ServiceList} edit={ServiceEdit} create={ServiceCreate}/>
+            <Resource name="config" show={ConfigShow} list={ConfigList} edit={ConfigEdit} create={ConfigCreate}/>
         </Admin>
     )
 };
