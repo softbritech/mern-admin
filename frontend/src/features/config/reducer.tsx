@@ -8,7 +8,8 @@ const initialState = {
 const configReducer = (state = initialState, action: any) => {
     switch (action.type){
         case ('FETCH_CONFIG_SUCCESS'): {
-            const configObj = action.payload.reduce((acc: Record<string, string>, item: any) => {
+            const configObj = action.payload.reduce((acc, item) => {
+                if (!acc[item.key]) acc[item.key] = {};
                 acc[item.key] = item.value;
                 return acc;
             }, {});

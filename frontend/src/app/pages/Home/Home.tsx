@@ -13,13 +13,18 @@ import {useServices} from "../../../features/services/hooks.tsx";
 import {Service} from "../../../features/services/types.tsx";
 import ServiceItem from "../../components/includes/Services/ServiceItem/ServiceItem.tsx";
 import {useConfig} from "../../../features/config/hooks.tsx";
+import BenefitsItem from "../../components/includes/Benefits/BenefitsItem.tsx";
+import {useBenefits} from "../../../features/benefits/hooks.tsx";
+import {Benefit} from "../../../features/benefits/types.tsx";
 
 
 const Home = () => {
     const {posts, loading} = usePosts();
     const {slides, slideIsLoading} = useSlides();
-    const {pages, pagesIsLoading} = usePages()
-    const {services, serviceIsLoading} = useServices()
+    const {pages, pagesIsLoading} = usePages();
+    const {services, serviceIsLoading} = useServices();
+    const {benefits, benefitsIsLoading} = useBenefits();
+
     const {config, configIsLoading} = useConfig();
 
     const aboutPage = pages.find((page) => page.slug === '/about-us');
@@ -40,10 +45,14 @@ const Home = () => {
                     <AboutUs page={aboutPage}/>
                 </Suspense>
             )}
-            <section className="information-section">
-                <div className="information-section__wrapper py-25">
+            <section className="benefits-section">
+                <div className="benefits-section__wrapper py-25">
                     <div className="container mx-auto">
-                        <p>fds</p>
+                        <div className="benefits-list">
+                            {benefits.map((item: Benefit) => (
+                                <BenefitsItem key={item._id} item={item}/>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>
