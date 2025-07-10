@@ -29,7 +29,6 @@ const configProvider: DataProvider = {
             })),
             total: response.length,
         };
-        throw new Error(`Unknown resource: ${resource}`);
     },
     getOne: async (
         _resource: string,

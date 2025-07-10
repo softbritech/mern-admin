@@ -17,6 +17,11 @@ import ConfigList from '../resources/Config/ConfigList.tsx'
 import ConfigEdit from '../resources/Config/ConfigEdit.tsx'
 import ConfigCreate from '../resources/Config/ConfigCreate.tsx'
 import ConfigShow from '../resources/Config/ConfigShow.tsx'
+import BenefitList from '../resources/Benefit/BenefitList.tsx'
+import BenefitEdit from '../resources/Benefit/BenefitEdit.tsx'
+import BenefitCreate from '../resources/Benefit/BenefitCreate.tsx'
+import BenefitShow from '../resources/Benefit/BenefitShow.tsx'
+
 export {
     PostCreate,
     PostEdit,
@@ -37,5 +42,8 @@ export {
     ConfigEdit,
     ConfigCreate,
     ConfigShow,
-
+    BenefitList,
+    BenefitEdit,
+    BenefitCreate,
+    BenefitShow,
 }

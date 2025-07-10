@@ -4,6 +4,7 @@ import pageProvider from "./pageProvider.tsx";
 import slideProvider from "./slideProviders.tsx";
 import serviceProvider from "./serviceProvider.tsx";
 import configProvider from "./configProvider.tsx";
+import benefitProvider from "./benefitProvider.tsx";
 
 export const dataProvider = combineDataProviders((resource) => {
     switch (resource) {
@@ -17,6 +18,8 @@ export const dataProvider = combineDataProviders((resource) => {
             return serviceProvider;
         case 'config':
             return configProvider;
+        case 'benefits':
+            return benefitProvider;
         default:
             throw new Error(`Unknown resource: ${resource}`);
     }

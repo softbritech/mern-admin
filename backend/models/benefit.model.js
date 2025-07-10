@@ -1,12 +1,12 @@
 import mongoose, {Schema} from "mongoose";
 
-const benefitModel = new Schema({
+const benefitSchema = new Schema({
   title: String,
   description: String,
 }, {
     timestamps: true,
 })
 
-const Benefit = mongoose.model('Benefit', benefitModel)
+const Benefit = mongoose.model('Benefit', benefitSchema);
 
 export default Benefit;

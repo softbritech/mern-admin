@@ -15,7 +15,16 @@ import {
     SlideEdit,
     PageEdit,
     PageCreate,
-    ServiceEdit, ServiceCreate, ServiceShow, ConfigList, ConfigShow, ConfigEdit, ServiceList, ConfigCreate
+    ServiceEdit,
+    ServiceCreate,
+    ServiceShow,
+    ConfigList,
+    ConfigShow,
+    ConfigEdit,
+    ServiceList,
+    ConfigCreate,
+    BenefitShow,
+    BenefitList, BenefitEdit, BenefitCreate
 } from "../resources";
 
 
@@ -28,6 +37,8 @@ const AdminRoute: FC = () => {
             <Resource name="slides" show={SlideShow} list={SlideList} edit={SlideEdit}/>
             <Resource name="services" show={ServiceShow} list={ServiceList} edit={ServiceEdit} create={ServiceCreate}/>
             <Resource name="config" show={ConfigShow} list={ConfigList} edit={ConfigEdit} create={ConfigCreate}/>
+            <Resource name="benefits" show={BenefitShow} list={BenefitList} edit={BenefitEdit} create={BenefitCreate}/>
+
         </Admin>
     )
 };
