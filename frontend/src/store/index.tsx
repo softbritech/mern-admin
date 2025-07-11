@@ -7,6 +7,7 @@ import layoutReducer from "../features/ui/reducer.tsx";
 import serviceReducer from "../features/services/reducer.tsx";
 import configReducer from "../features/config/reducer.tsx";
 import benefitReducer from "../features/benefits/reducer.tsx";
+import projectReducer from "../features/projects/reducer.tsx";
 
 const initialStore = {};
 export const rootReducer = combineReducers({
@@ -17,6 +18,7 @@ export const rootReducer = combineReducers({
     layout: layoutReducer,
     siteConfig: configReducer,
     benefits: benefitReducer,
+    projects: projectReducer,
 });
 const middleware = [thunk];
 

@@ -6,12 +6,6 @@
     line-height: 43px;
     letter-spacing: 1.5px;
     font-family: 'Montserrat';
-    &.second-title-black{
-      color: var(--color-black);
-    }
-    &.second-title-grey{
-      color: var(--color-grey);
-    }
     @media(max-width: 769px){
       font-size: 24px;
       line-height: 1.5;
@@ -19,7 +13,18 @@
     @media(max-width: 768px){
       font-size: 18px;
     }
-
+    &.second-title-black{
+      color: var(--color-black);
+    }
+    &.second-title-grey{
+      color: var(--color-grey);
+    }
+    &.second-title-white{
+      color: var(--color-white);
+      &:before {
+        background-color: var(--color-white);
+      }
+    }
     &:before {
       content: "";
       position: absolute;

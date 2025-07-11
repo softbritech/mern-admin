@@ -16,6 +16,8 @@ import {useConfig} from "../../../features/config/hooks.tsx";
 import BenefitsItem from "../../components/includes/Benefits/BenefitsItem.tsx";
 import {useBenefits} from "../../../features/benefits/hooks.tsx";
 import {Benefit} from "../../../features/benefits/types.tsx";
+import MainHeading from "../../components/common/Heading/MainHeading/MainHeading.tsx";
+import MainButton from "../../components/common/Button/MainButton.tsx";
 
 
 const Home = () => {
@@ -46,11 +48,13 @@ const Home = () => {
                 </Suspense>
             )}
             <section className="benefits-section">
-                <div className="benefits-section__wrapper py-25">
+                <div className="benefits-section__wrapper py-15 lg:py-25">
                     <div className="container mx-auto">
-                        <div className="benefits-list">
+                        <div className="benefits-list flex justify-between flex-wrap lg:flex-nowrap">
                             {benefits.map((item: Benefit) => (
-                                <BenefitsItem key={item._id} item={item}/>
+                                <div key={item._id} className="w-full sm:w-1/2 l px-6 mb-0 md:mb-12">
+                                    <BenefitsItem  item={item}/>
+                                </div>
                             ))}
                         </div>
                     </div>
@@ -65,9 +69,9 @@ const Home = () => {
                         />
                         <ErrorBoundary fallback={<div>Something went wrong</div>}>
                             <Suspense fallback={<Spinner loading={serviceIsLoading}/>}>
-                                <div className="services-list mt-10 lg:mt-15 flex flex-wrap justify-center">
+                                <div className="services-list mt-10 lg:mt-15 flex flex-wrap lg:flex-nowrap items-center justify-center">
                                     {services.map((service: Service) => (
-                                        <div key={service._id} className="md:w-2/5 xl:w-1/2 sm:w-full px-5">
+                                        <div key={service._id} className="md:w-2/5 lg:w-1/2 w-full px-5">
                                             <ServiceItem service={service}/>
                                         </div>
                                     ))}
@@ -75,6 +79,19 @@ const Home = () => {
                             </Suspense>
                         </ErrorBoundary>
                     </div>
+                </div>
+            </section>
+            <section className="contact-us__section">
+                <div className="contact-us__wrapper text-center px-10 lg:px-0 py-15 lg:py-25">
+                    <SecondHeading
+                        className="second-title text-center second-title-white font-[700]"
+                        title={`${config.contact_us}`}
+                    />
+                    <MainButton
+                        text="Contact Us"
+                        slug="/contact"
+                        className="main-button main-button-white mt-4 lg:mt-15"
+                    />
                 </div>
             </section>
             <section className="articles-section">
