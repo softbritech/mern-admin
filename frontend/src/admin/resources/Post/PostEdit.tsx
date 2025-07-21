@@ -7,6 +7,7 @@ const PostEdit: React.FC<LayoutProps> = (props) => {
                 <TextInput disabled source="id" />
                 <TextInput source="name" />
                 <TextInput multiline source="description" />
+                <TextInput multiline source="author"/>
             </SimpleForm>
         </Edit>
     )

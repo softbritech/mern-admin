@@ -4,8 +4,8 @@ const postSchema = new Schema({
     name: String,
     description: String,
     image: String,
-    change: Boolean,
-    done: Boolean
+    author: String,
+    date: Date,
 }, {
     timestamps: true,
 });

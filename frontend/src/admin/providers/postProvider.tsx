@@ -47,8 +47,9 @@ const postProvider: DataProvider = {
     },
     create: async (resource: string, params: CreateParams<{
         name: string;
-        description: string
-    }>): Promise<CreateResult<{ name: string; description: string }>> => {
+        description: string;
+        author: string
+    }>): Promise<CreateResult<{ name: string; description: string; author: string }>> => {
         const response = await postService.createPost(params.data);
         return {data: {...response, id: response._id},};
     },

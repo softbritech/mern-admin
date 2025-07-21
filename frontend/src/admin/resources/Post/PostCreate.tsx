@@ -6,6 +6,7 @@ const PostCreate: React.FC<LayoutProps> = (props) => {
             <SimpleForm>
                 <TextInput source="name"/>
                 <TextInput multiline source="description"/>
+                <TextInput multiline source="author"/>
             </SimpleForm>
         </Create>
     )

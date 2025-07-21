@@ -18,6 +18,7 @@ import {useBenefits} from "../../../features/benefits/hooks.tsx";
 import {Benefit} from "../../../features/benefits/types.tsx";
 import MainHeading from "../../components/common/Heading/MainHeading/MainHeading.tsx";
 import MainButton from "../../components/common/Button/MainButton.tsx";
+import PostItem from "../../components/includes/Post/PostItem.tsx";
 
 
 const Home = () => {
@@ -53,7 +54,7 @@ const Home = () => {
                         <div className="benefits-list flex justify-between flex-wrap lg:flex-nowrap">
                             {benefits.map((item: Benefit) => (
                                 <div key={item._id} className="w-full sm:w-1/2 l px-6 mb-0 md:mb-12">
-                                    <BenefitsItem  item={item}/>
+                                    <BenefitsItem item={item}/>
                                 </div>
                             ))}
                         </div>
@@ -69,7 +70,8 @@ const Home = () => {
                         />
                         <ErrorBoundary fallback={<div>Something went wrong</div>}>
                             <Suspense fallback={<Spinner loading={serviceIsLoading}/>}>
-                                <div className="services-list mt-10 lg:mt-15 flex flex-wrap lg:flex-nowrap items-center justify-center">
+                                <div
+                                    className="services-list mt-10 lg:mt-15 flex flex-wrap lg:flex-nowrap items-center justify-center">
                                     {services.map((service: Service) => (
                                         <div key={service._id} className="md:w-2/5 lg:w-1/2 w-full px-5">
                                             <ServiceItem service={service}/>
@@ -95,16 +97,25 @@ const Home = () => {
                 </div>
             </section>
             <section className="articles-section">
-                <div className="articles-section__wrapper">
-                    <ErrorBoundary fallback={<div>Something went wrong</div>}>
-                        <Suspense fallback={<Spinner loading={loading}/>}>
-                            {posts.map((post: Post) => (
-                                <div key={post._id}>
-                                    <h4>{post.name}</h4>
+                <div className="articles-section__wrapper py-15 lg:py-23 bg-[var(--color-background)]">
+                    <div className="container mx-auto">
+                        <SecondHeading
+                            className="second-title text-center second-title-black font-[700]"
+                            title="Recent News"
+                        />
+                        <ErrorBoundary fallback={<div>Something went wrong</div>}>
+                            <Suspense fallback={<Spinner loading={loading}/>}>
+                                <div
+                                    className="posts-list  flex flex-wrap items-center justify-center">
+                                    {posts.map((post: Post) => (
+                                        <div key={post._id} className="md:w-2/5 lg:w-1/3 w-full px-5">
+                                            <PostItem post={post}/>
+                                        </div>
+                                    ))}
                                 </div>
-                            ))}
-                        </Suspense>
-                    </ErrorBoundary>
+                            </Suspense>
+                        </ErrorBoundary>
+                    </div>
                 </div>
             </section>
             <section className="map-section">

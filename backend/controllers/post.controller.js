@@ -13,9 +13,9 @@ class PostController {
         }
     }
     async createPost(req, res) {
-        const { name, description } = req.body;
+        const { name, description, author } = req.body;
         try {
-            const posts = await this.postService.createPost({name, description});
+            const posts = await this.postService.createPost({name, description, author});
             res.status(200).json(posts);
         } catch (error) {
             res.status(500).json({ message: error.message });
