@@ -1,0 +1,32 @@
+.post-item{
+  .post-item__content{
+    h3{
+      font-size: 18px;
+      line-height: 24px;
+      letter-spacing: 1.08px;
+      text-transform: uppercase;
+      font-family: 'Montserrat';
+      color: var(--color-black);
+    }
+  }
+  .post-item__content{
+    .post-item__wrapper {
+      span{
+        font-size: 14px;
+        line-height: 23px;
+        font-style: italic;
+        color: var( --color-lightGrey);
+        margin-bottom: 5px;
+        margin-left: 15px;
+        &.is-golden{
+          color: var(--color-yellow);
+        }
+      }
+      .post-item__description{
+        font-size: 18px;
+        line-height: 30px;
+        color: var( --color-lightGrey);
+      }
+    }
+  }
+}

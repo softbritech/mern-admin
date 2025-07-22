@@ -11,7 +11,11 @@ class PostService {
     }
     createPost = async (data: any) => {
         try {
-            const response = await instance.post('/posts/new', data);
+            const response = await instance.post('/posts/new', data, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
             return response.data;
         } catch (error){
             console.log(error)
@@ -27,7 +31,11 @@ class PostService {
     }
     updatePostById = async (id: string, body: any ) => {
         try {
-            const { data } = await instance.put(`/posts/${id}`, body);
+            const { data } = await instance.patch(`/posts/${id}`, body, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
             return data;
         } catch (error){
             console.log(error);

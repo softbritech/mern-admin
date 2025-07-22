@@ -13,9 +13,14 @@ class PostController {
         }
     }
     async createPost(req, res) {
-        const { name, description, author } = req.body;
         try {
-            const posts = await this.postService.createPost({name, description, author});
+            const image = req.file?.filename;
+            const post = await  this.postService.createPost({
+                ...req.body,
+                image: image ? `/${image}` : undefined,
+            });
+            const posts = await this.postService.createPost(post);
+
             res.status(200).json(posts);
         } catch (error) {
             res.status(500).json({ message: error.message });
@@ -42,7 +47,18 @@ class PostController {
     async updatePostById(req,res){
         const { id } = req.params;
         try {
-            const post = await this.postService.updatePost(id, req.body);
+            const oldPost = await this.postService.getPost(id);
+            if(!oldPost) return res.status(404).json({message: 'Not Found'});
+            let updatedData ={...req.body}
+
+            if(req.file){
+                updatedData.image = req.file.filename;
+            } else{
+                updatedData.image = oldPost.image;
+            }
+
+            const post = await this.postService.updatePost(id, updatedData);
+
             res.status(200).json(post);
         } catch (error){
             res.status(500).json({ message: error.message });

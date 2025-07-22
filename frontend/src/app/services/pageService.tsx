@@ -18,8 +18,6 @@ class PageService {
         }
     }
     updatePageById = async (id: string, payload: FormData | Record<string, any>) => {
-        console.log('Payload for update:', payload);
-        console.log('Is payload instance of FormData?', payload instanceof FormData);
         try {
             const {data} = await instance.patch(`/pages/${id}`, payload, {
                 headers: {

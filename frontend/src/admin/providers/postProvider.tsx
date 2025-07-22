@@ -8,6 +8,7 @@ import {
     Identifier,
     RaRecord, UpdateParams, UpdateResult
 } from 'react-admin';
+import pageService from "../../app/services/pageService.tsx";
 
 interface Post extends RaRecord {
     _id: string;
@@ -50,16 +51,50 @@ const postProvider: DataProvider = {
         description: string;
         author: string
     }>): Promise<CreateResult<{ name: string; description: string; author: string }>> => {
-        const response = await postService.createPost(params.data);
+        const { image, ...otherData } = params.data;
+
+        const formData = new FormData();
+
+        Object.entries(otherData).forEach(([key, value]) => {
+            formData.append(key, value);
+        });
+
+        if (image && image.rawFile instanceof File) {
+            formData.append('image', image.rawFile);
+        }
+
+        const response = await postService.createPost(formData);
+
         return {data: {...response, id: response._id},};
     },
     update: async (_resource: string, {id, data}: UpdateParams):Promise<UpdateResult> => {
-        const response = await postService.updatePostById(id, data);
+        const { image, ...rest } = data;
+
+        if (image && image.rawFile && image.rawFile instanceof File) {
+            const formData = new FormData();
+
+            Object.entries(rest).forEach(([key, value]) => {
+                formData.append(key, value);
+            });
+
+            formData.append('image', image.rawFile, image.rawFile.name);
+
+
+            const response = await postService.updatePostById(id, formData);
+            return {
+                data: {
+                    ...response, id: response._id
+                }
+            };
+        }
+
+        const response = await postService.updatePostById(id, rest);
+
         return {
             data: {
                 ...response, id: response._id
             }
-        }
+        };
     },
     updateMany: async () => {
         throw new Error('Not implemented');
