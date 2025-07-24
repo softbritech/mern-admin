@@ -1,0 +1,20 @@
+.contact-us__form{
+  .contact-us__wrapper{
+    .contact-us__content{
+      .contact-info__details{
+        ul{
+          li{
+            font-size: 18px;
+            line-height: 30px;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: var(--color-black);
+            span{
+              color: var(--color-grey);
+            }
+          }
+        }
+      }
+    }
+  }
+}

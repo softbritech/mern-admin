@@ -16,9 +16,9 @@ import {useConfig} from "../../../features/config/hooks.tsx";
 import BenefitsItem from "../../components/includes/Benefits/BenefitsItem.tsx";
 import {useBenefits} from "../../../features/benefits/hooks.tsx";
 import {Benefit} from "../../../features/benefits/types.tsx";
-import MainHeading from "../../components/common/Heading/MainHeading/MainHeading.tsx";
 import MainButton from "../../components/common/Button/MainButton.tsx";
-import PostItem from "../../components/includes/Post/PostItem.tsx";
+import ContactUs from "../../components/includes/ContactUs/ContactUs.tsx";
+import PostItem from "../../components/includes/Posts/PostItem.tsx";
 
 
 const Home = () => {
@@ -44,7 +44,7 @@ const Home = () => {
                 </div>
             </section>
             {aboutPage && (
-                <Suspense fallback={<Spinner loading={pagesIsLoading}/>}>
+                <Suspense fallback={<Spinner loading={<p>Loading...</p>}/>}>
                     <AboutUs page={aboutPage}/>
                 </Suspense>
             )}
@@ -106,9 +106,9 @@ const Home = () => {
                         <ErrorBoundary fallback={<div>Something went wrong</div>}>
                             <Suspense fallback={<Spinner loading={loading}/>}>
                                 <div
-                                    className="posts-list  flex flex-wrap items-center justify-center">
+                                    className="posts-list mt-10 md:mt-15 flex flex-wrap items-center justify-start lg:justify-center">
                                     {posts.map((post: Post) => (
-                                        <div key={post._id} className="md:w-2/5 lg:w-1/3 w-full px-5">
+                                        <div key={post._id} className="md:w-1/2 lg:w-1/3 w-full mb-12 md:mb-15 px-3">
                                             <PostItem post={post}/>
                                         </div>
                                     ))}
@@ -118,6 +118,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+            <ContactUs/>
             <section className="map-section">
                 <iframe
                     src={`${config.iframe}`}

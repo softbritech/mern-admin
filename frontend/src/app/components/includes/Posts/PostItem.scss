@@ -7,6 +7,15 @@
       text-transform: uppercase;
       font-family: 'Montserrat';
       color: var(--color-black);
+      transition: .33s all ease;
+      cursor: pointer;
+      @media(max-width: 480px){
+        font-size: 14px;
+        line-height: 22px;
+      }
+      &:hover{
+        color: var(--color-yellow);
+      }
     }
   }
   .post-item__content{
@@ -20,12 +29,19 @@
         margin-left: 15px;
         &.is-golden{
           color: var(--color-yellow);
+          @media(max-width: 991px){
+            margin-left: 0;
+          }
         }
       }
       .post-item__description{
         font-size: 18px;
         line-height: 30px;
         color: var( --color-lightGrey);
+        @media(max-width: 480px){
+          font-size: 14px;
+          line-height: 22px;
+        }
       }
     }
   }

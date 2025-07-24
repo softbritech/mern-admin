@@ -28,7 +28,7 @@ const Header = ({handleToggle}) => {
                                 <li className="pe-4 flex items-center">
                                     <FontAwesomeIcon icon={faLocationDot}/>
                                     <span className="ms-1 font-[300]">
-                                        Address: 4578 Marmora Road, Glasgow, D04 89GR
+                                        Address: {config.address}
                                    </span>
                                 </li>
                                 <li className="ps-4 flex items-center">
